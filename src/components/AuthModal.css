@@ -1,0 +1,119 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 28px 28px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+  background: #f4f4f6;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.modal-subtitle {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.55);
+  margin-bottom: 20px;
+}
+
+.modal-plan-chip {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  background: #f4f4f6;
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-form input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.modal-form input:focus {
+  border-color: #000;
+}
+
+.modal-submit {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 13px 20px;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+
+.modal-submit:hover {
+  opacity: 0.8;
+}
+
+.modal-back {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 6px;
+  align-self: center;
+}
+
+.modal-back:hover {
+  color: #000;
+}
+
+.modal-success {
+  text-align: center;
+  padding: 16px 0 4px;
+}

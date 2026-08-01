@@ -1,0 +1,141 @@
+.pricing {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  padding: 80px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  scroll-margin-top: 88px;
+}
+
+.pricing-head {
+  text-align: center;
+  max-width: 480px;
+}
+
+.pricing-title {
+  font-weight: 500;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  letter-spacing: -0.02em;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+.pricing-subtitle {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.pricing-grid {
+  width: 100%;
+  max-width: 1040px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.pricing-card {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+}
+
+.pricing-card.is-popular {
+  border-color: #000;
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: #000;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.pricing-plan-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.pricing-price {
+  font-size: 2.25rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: #000;
+}
+
+.pricing-period {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.45);
+  margin-left: 4px;
+}
+
+.pricing-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.pricing-features li {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.65);
+  padding-left: 18px;
+  position: relative;
+}
+
+.pricing-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #000;
+}
+
+.pricing-cta {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: transparent;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  transition: opacity 0.2s ease;
+}
+
+.pricing-cta-dark {
+  background: #000;
+  color: #fff;
+  border: none;
+}
+
+.pricing-cta:hover {
+  opacity: 0.75;
+}
+
+@media (min-width: 768px) {
+  .pricing {
+    padding: 120px 32px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
