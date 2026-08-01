@@ -1,79 +1,67 @@
 # NeuralKinetics
 
-A minimalist black-and-white landing page selling an AI / neural networks course — built with React, Vite and Framer Motion (`motion`). Bilingual (RU/EN), with a mock registration + subscription checkout flow.
+**[Live demo](https://bringto-dot.github.io/ai-sales-landing/)**
 
-**🔴 Live demo:** https://bringto-dot.github.io/ai-sales-landing/
+*[Читать на русском](README.ru.md)*
 
-🇷🇺 [Русский](#русский) · 🇬🇧 [English](#english)
+A single-page course-sales landing, built as a portfolio piece to practice a
+minimal black-and-white aesthetic on top of React: full-viewport video hero,
+glassmorphic UI, scroll-driven motion and real i18n, without leaning on a
+component library.
 
----
+The course, the mentors and the curriculum are fictional. The hero clip is
+real stock footage, used as the content to design around.
 
-## English
+![Hero](docs/preview/01-hero.png)
 
-Full-viewport hero with a looping background video, a liquid-glass navbar with a working dropdown menu, a course program section, a "how it works" section with scroll-triggered animations, and a pricing/subscription section with a demo registration + checkout modal. Language toggle (RU ⇄ EN) persists across visits.
+## What this project demonstrates
 
-![Hero screen](docs-assets/01-hero.png)
+- **A hero that survives real content.** Nav, looping background video and
+  the bottom copy block are independently positioned (fixed / absolute /
+  absolute), so the layout can't collapse into itself on short viewports —
+  a bug I hit and fixed during the build.
+- **Liquid glass, used sparingly.** `backdrop-filter: blur + saturate` with
+  inset highlights on the nav pills, the dropdown menu and a couple of
+  cards — not slapped on every surface, just where an iOS-style frosted
+  panel reads as an accent rather than noise.
+- **Motion with a reason.** A scroll-linked tilt/scale on the program cards
+  (`useScroll` + `useTransform` from `motion`), staggered reveal-on-scroll
+  for the steps grid, and a menu toggle that morphs a `+` into an `×`
+  instead of just showing/hiding text.
+- **Real i18n, not a plugin.** Every string lives in one dictionary
+  (`src/i18n/translations.js`) keyed by `ru`/`en`; a context provider swaps
+  the active language and persists the choice to `localStorage`.
+- **Front end that behaves like it has a back end.** The pricing cards open
+  a sign-up → payment → success modal flow with real client-side validation,
+  even though nothing is wired up server-side (documented below, not
+  hidden).
 
-The hero includes a live language switcher, a glass-styled navbar menu with links to every section, and two CTAs that jump to different parts of the page.
+## Screens
 
-![How it works](docs-assets/02-how-it-works.png)
+| | |
+|---|---|
+| ![How it works](docs/preview/02-how-it-works.png) | ![Pricing](docs/preview/03-pricing.png) |
 
-A four-step "how it works" section with staggered reveal-on-scroll animations, sitting between the course program and the pricing table.
+## Stack
 
-![Pricing](docs-assets/03-pricing.png)
-
-Three subscription tiers, each opening a demo sign-up → payment → success modal. **No real payment gateway is wired up** — the checkout form is a front-end mock; card details are never sent or stored anywhere.
-
-### Tech stack
-
-- React 19 + Vite
-- `motion` (Framer Motion) for animations
-- Plain CSS (no UI framework)
-- `lucide-react` for icons
-
-### Run locally
-
-```bash
-npm install
-npm run dev
-```
-
-### Deployment
-
-Pushing to `main` triggers a GitHub Actions workflow (`.github/workflows/deploy.yml`) that builds the app and publishes it to GitHub Pages.
-
----
-
-## Русский
-
-Полноэкранный хиро-блок с зацикленным фоновым видео, навбар в стиле «жидкого стекла» с рабочим выпадающим меню, секция программы курса, секция «как это работает» с анимациями при прокрутке и секция тарифов с демо-формой регистрации и оплаты подписки. Переключатель языка (RU ⇄ EN) сохраняется между визитами.
-
-![Главный экран](docs-assets/01-hero.png)
-
-На главном экране — переключатель языка, стеклянное меню со ссылками на все секции и две кнопки, ведущие в разные части страницы.
-
-![Как это работает](docs-assets/02-how-it-works.png)
-
-Секция из четырёх шагов с анимацией появления при прокрутке — между программой курса и тарифами.
-
-![Тарифы](docs-assets/03-pricing.png)
-
-Три тарифных плана, каждый открывает демо-форму: регистрация → оплата → успех. **Реального платёжного шлюза нет** — форма оплаты имитационная, данные карты никуда не отправляются и не сохраняются.
-
-### Стек технологий
-
-- React 19 + Vite
-- `motion` (Framer Motion) для анимаций
-- Обычный CSS (без UI-фреймворков)
-- `lucide-react` для иконок
-
-### Запуск локально
+React 19 + Vite, `motion` (Framer Motion) for animation, plain CSS (no
+Tailwind, no component library), `lucide-react` for icons.
 
 ```bash
 npm install
 npm run dev
 ```
 
-### Деплой
+Pushing to `main` runs a GitHub Actions workflow
+(`.github/workflows/deploy.yml`) that builds the app and publishes `dist/`
+to GitHub Pages.
 
-При пуше в `main` запускается GitHub Actions (`.github/workflows/deploy.yml`), который собирает проект и публикует его на GitHub Pages.
+## Notes for anyone reading the code
+
+- The checkout modal has no backend. Submitting it walks through
+  registration → payment → success client-side; card fields are never sent
+  or stored anywhere. Wiring it to a real processor is a matter of
+  replacing the two `onSubmit` handlers in `src/components/AuthModal.jsx`.
+- `vite.config.js` sets `base: '/ai-sales-landing/'` so built assets resolve
+  correctly under the GitHub Pages subpath — expect local dev to live at
+  `localhost:5173/ai-sales-landing/`, not the root.
